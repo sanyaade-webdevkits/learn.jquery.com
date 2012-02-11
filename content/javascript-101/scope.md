@@ -89,3 +89,20 @@ bar();  // bar is defined outside of the anonymous function
 bim();  // bim is not defined outside of the anonymous function,
         // so this will result in an error
 </javascript>
+
+Scoping occurs at function level rather than block level like some other languages. All variable declarations are 'pulled up' to the function that it is contained within. It is important to note that only the declaration is pulled up but the value does not get pulled up with it. 
+
+<javascript caption="Function level scoping">
+var greeting = "Hello";
+// 'name' is available here, even though it hasn't been declared
+console.log(name); // logs 'undefined'
+
+if (true) {
+    var name = "world";
+    console.log(greeting + ' ' + name); // logs 'Hello world'
+    name = "you";
+}
+
+// 'name' still exists despite being declared within the block above
+console.log(greeting + ' ' + name);​ // logs 'Hello you'
+</javascript>
